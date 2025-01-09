@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "Feel free to delete this and start from scratch.",
   "main": "app.js",
+  "type": "module",
   "bin": {
     "week-5-hackathon-team-chill": "bin/www.js"
   },
   "scripts": {
+    "start": "node controllers/movies.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
