@@ -8,7 +8,8 @@
     "week-5-hackathon-team-chill": "bin/www.js"
   },
   "scripts": {
-    "start": "node controllers/movies.js",
+    "start": "node --env-file=.env controllers/movies.js",
+    "dev": "node --env-file=.env --watch controllers/movies.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

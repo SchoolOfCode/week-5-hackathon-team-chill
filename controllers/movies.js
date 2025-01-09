@@ -1,6 +1,5 @@
 import express from "express";
 const app = express();
-const PORT = 3000;
 
 // import {
 //     getAllMovies,
@@ -8,7 +7,9 @@ const PORT = 3000;
 
 app.use(express.json());
 
-app.listen(PORT, () => {console.log(`Server is running on port ${PORT}`)});
+app.listen(process.env.PORT, () => {
+  console.log(`Server is running on port ${process.env.PORT}`);
+});
 
 app.get("/", async function (req, res) {
   const result = await getAllMovies();
