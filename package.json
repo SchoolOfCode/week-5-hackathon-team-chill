@@ -1,0 +1,25 @@
+{
+  "name": "week-5-hackathon-team-chill",
+  "version": "1.0.0",
+  "description": "Feel free to delete this and start from scratch.",
+  "main": "app.js",
+  "bin": {
+    "week-5-hackathon-team-chill": "bin/www.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SchoolOfCode/week-5-hackathon-team-chill.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SchoolOfCode/week-5-hackathon-team-chill/issues"
+  },
+  "homepage": "https://github.com/SchoolOfCode/week-5-hackathon-team-chill#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
