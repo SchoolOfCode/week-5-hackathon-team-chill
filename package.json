@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/SchoolOfCode/week-5-hackathon-team-chill#readme",
   "dependencies": {
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "pg": "^8.13.1"
   }
 }
