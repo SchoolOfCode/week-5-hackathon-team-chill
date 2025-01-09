@@ -22,11 +22,12 @@ const testConnection = async () => {
 
     //Insert data into the tables
     await pool.query(
-      `INSERT INTO stars (name, star_id) VALUES ('Tim Robbins', 44)`
+      `INSERT INTO stars (name, star_id) VALUES ('Tim Robbins', 44), ('Julia Roberts', 25);`
     );
     await pool.query(
-      `INSERT INTO movies (movie_id, title, genre, star_id) VALUES (1, 'The Shawshank Redemption', 'Drama', 44)`
+      `INSERT INTO movies (movie_id, title, genre, star_id) VALUES (1, 'The Shawshank Redemption', 'Drama', 44), (2, 'Pretty Woman', 'Romance', 25);`
     );
+
     console.log('Database connection successful');
   } catch (error) {
     console.error('Error connecting to the database:', error);
