@@ -8,6 +8,7 @@
     "week-5-hackathon-team-chill": "bin/www.js"
   },
   "scripts": {
+    "reset-database": "node --env-file=.env db/scripts/reset-database.js",
     "start": "node --env-file=.env controllers/movies.js",
     "dev": "node --env-file=.env --watch controllers/movies.js",
     "test": "echo \"Error: no test specified\" && exit 1"
