@@ -1,4 +1,4 @@
-import { pool } from "../index.js";
+import { pool } from '../index.js';
 
 const testConnection = async () => {
   try {
@@ -27,9 +27,9 @@ const testConnection = async () => {
     await pool.query(
       `INSERT INTO movies (movie_id, title, genre, star_id) VALUES (1, 'The Shawshank Redemption', 'Drama', 44)`
     );
-    console.log("Database connection successful");
+    console.log('Database connection successful');
   } catch (error) {
-    console.error("Error connecting to the database:", error);
+    console.error('Error connecting to the database:', error);
   } finally {
     //Close the pool or it will hang
     await pool.end();
