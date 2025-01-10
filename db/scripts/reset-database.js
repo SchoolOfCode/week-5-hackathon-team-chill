@@ -22,10 +22,10 @@ const testConnection = async () => {
 
     //Insert data into the tables
     await pool.query(
-      `INSERT INTO stars (name, star_id) VALUES ('Tim Robbins', 44), ('Julia Roberts', 25);`
+      `INSERT INTO stars (name, star_id) VALUES ('Tim Robbins', 44), ('Julia Roberts', 25), ('Dustin Hoffman', 12);`
     );
     await pool.query(
-      `INSERT INTO movies (movie_id, title, genre, star_id) VALUES (1, 'The Shawshank Redemption', 'Drama', 44), (2, 'Pretty Woman', 'Romance', 25);`
+      `INSERT INTO movies (movie_id, title, genre, star_id) VALUES (1, 'The Shawshank Redemption', 'Drama', 44), (2, 'Pretty Woman', 'Romance', 25), (3, 'Rain Man', 'Comedy drama', 12);`
     );
 
     console.log('Database connection successful');

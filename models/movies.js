@@ -15,8 +15,26 @@ export const getMovieById = async (id) => {
     const text = `SELECT * FROM Movies WHERE movie_id = $1`;
     const values = [id];
     const result = await pool.query(text, values);
-    return result.rows;
+    if (result.rows.length === 0) {
+      throw new Error('`Cannot find movie with id ${id}`');
+    } else {
+      return result.rows;
+    }
   } catch (err) {
     throw new Error(`Cannot find movie with id ${id}`);
+  }
+};
+
+export const updateMovieById = async (id, title, genre) => {
+  const text = `UPDATE movies SET title = $2, genre = $3 WHERE movie_id = $1 RETURNING *`;
+  const values = [id, title, genre];
+  try {
+    const result = await pool.query(text, values);
+    if (result.rowCount === 0) {
+      return null;
+    }
+    return result.rows[0];
+  } catch (err) {
+    throw new Error('Update failed');
   }
 };
