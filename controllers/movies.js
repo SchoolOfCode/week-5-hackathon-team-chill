@@ -3,6 +3,7 @@ import {
   getAllMovies,
   getMovieById,
   updateMovieById,
+  deleteMovieById,
 } from '../models/movies.js';
 
 const app = express();
@@ -43,6 +44,16 @@ app.patch('/:id', async (req, res) => {
     }
     const updatedMovie = await updateMovieById(movieId, title, genre);
     res.status(200).send(updatedMovie);
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+});
+
+app.delete('/:id', async (req, res) => {
+  try {
+    const movieId = req.params.id;
+    const deletedMovie = await deleteMovieById(movieId);
+    res.status(200).send(deletedMovie);
   } catch (err) {
     res.status(500).send(err.message);
   }
