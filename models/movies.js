@@ -30,7 +30,7 @@ export const updateMovieById = async (id, title, genre) => {
   const values = [id, title, genre];
   try {
     const result = await pool.query(text, values);
-    if (result.rowCount === 0) {
+    if (result.rowCount === 0) { //rowCount counts the rows AFFECTED by changes
       return null;
     }
     return result.rows[0];
