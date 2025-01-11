@@ -10,7 +10,7 @@ const app = express();
 
 app.use(express.json());
 
-app.get('/', async (req, res) => {
+app.get('/movies', async (req, res) => {
   try {
     const result = await getAllMovies();
     res.status(200).send(result);
@@ -19,7 +19,7 @@ app.get('/', async (req, res) => {
   }
 });
 
-app.get('/:id', async (req, res) => {
+app.get('/movies/:id', async (req, res) => {
   const movieId = req.params.id;
   try {
     //sql select movie with given id
@@ -34,7 +34,7 @@ app.get('/:id', async (req, res) => {
   }
 });
 
-app.patch('/:id', async (req, res) => {
+app.patch('/movies/:id', async (req, res) => {
   try {
     // Update a movie
     const movieId = req.params.id;
@@ -49,13 +49,16 @@ app.patch('/:id', async (req, res) => {
   }
 });
 
-app.delete('/:id', async (req, res) => {
+app.delete('/movies/:id', async (req, res) => {
   try {
     const movieId = req.params.id;
     const deletedMovie = await deleteMovieById(movieId);
     res.status(200).send(deletedMovie);
   } catch (err) {
-    if ((err.message === `Movie with id ${movieId} not found` || err.message === `No movie with id ${movieId} exists`)) {
+    if (
+      err.message === `Movie with id ${req.params.id} not found` ||
+      err.message === `No movie with id ${req.params.id} exists`
+    ) {
       res.status(404).send(err.message);
     } else {
       res.status(500).send(err.message);
