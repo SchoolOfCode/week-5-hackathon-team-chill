@@ -13,12 +13,12 @@ const testConnection = async () => {
 
     //Create the movies table
     await pool.query(`CREATE TABLE movies (
-        movie_id INT PRIMARY KEY,
-        title VARCHAR(50),
-        genre VARCHAR(50),
-        star_id INT,
-        FOREIGN KEY (star_id) REFERENCES stars(star_id)
-  );`);
+      movie_id SERIAL PRIMARY KEY,
+      title VARCHAR(100) NOT NULL,
+      genre VARCHAR(50) NOT NULL,
+      star_id INT,
+      FOREIGN KEY (star_id) REFERENCES stars(star_id) ON DELETE CASCADE
+    );`);
 
     //Insert data into the tables
     await pool.query(

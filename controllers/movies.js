@@ -55,7 +55,11 @@ app.delete('/:id', async (req, res) => {
     const deletedMovie = await deleteMovieById(movieId);
     res.status(200).send(deletedMovie);
   } catch (err) {
-    res.status(500).send(err.message);
+    if ((err.message === `Movie with id ${movieId} not found` || err.message === `No movie with id ${movieId} exists`)) {
+      res.status(404).send(err.message);
+    } else {
+      res.status(500).send(err.message);
+    }
   }
 });
 

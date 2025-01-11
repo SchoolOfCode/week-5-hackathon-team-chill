@@ -41,8 +41,9 @@ export const updateMovieById = async (id, title, genre) => {
 };
 
 export const deleteMovieById = async (id) => {
-  // isMovieIdInDb(id);
-
+  if (!await isMovieIdInDb(id)){
+     throw new Error(`Movie with id ${id} not found`);
+  }
   try {
     const text = `DELETE FROM Movies WHERE movie_id = $1 RETURNING *;`;
     const value = [id];
@@ -53,13 +54,13 @@ export const deleteMovieById = async (id) => {
   }
 };
 
-// export const isMovieIdInDb = async (id) => {
-//   const text = `SELECT * FROM Movies WHERE movie_id = $1`;
-//   const values = [id];
-//   const result = await pool.query(text, values);
-//   if (result.rows.length === 0) {
-//     return false;
-//   } else {
-//     return true;
-//   }
-// };
+export const isMovieIdInDb = async (id) => {
+  const text = `SELECT * FROM Movies WHERE movie_id = $1`;
+  const values = [id];
+  const result = await pool.query(text, values);
+  if (result.rows.length === 0) {
+    return false;
+  } else {
+    return true;
+  }
+};
